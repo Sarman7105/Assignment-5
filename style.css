@@ -1,0 +1,27 @@
+#search-btn{
+    background-color: #f06c4e;
+    color: white;
+}
+
+#foods{
+    display: flex;
+    flex-wrap: wrap;
+}
+#foods div{
+    margin: 1%;
+    width: 30%;
+    height: 350px;
+    background-color:lightgray;
+    border-radius: 10px;
+}
+#foods h3{
+    text-align: center;
+}
+#foods img{
+    width: 250px;
+    background-color: red;
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+!
