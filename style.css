@@ -3,25 +3,32 @@
     color: white;
 }
 
-#foods{
+.content-div{
     display: flex;
     flex-wrap: wrap;
 }
-#foods div{
+.content-div div{
     margin: 1%;
     width: 30%;
     height: 350px;
     background-color:lightgray;
     border-radius: 10px;
 }
-#foods h3{
+#food-info div{
+    height: 500px;
+}
+.content-div h3{
     text-align: center;
 }
-#foods img{
+.content-div h4,h2{
+    margin-left: 10px;
+}
+.content-div img{
+    padding: 10px;
     width: 250px;
-    background-color: red;
     display: block;
     margin: 10px auto;
-    border-radius: 5px;
+    background-color: white;
+    border-radius: 10px;
 }
 !
