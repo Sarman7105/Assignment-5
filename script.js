@@ -2,12 +2,13 @@ const searchBtn = document.getElementById('search-btn');
 searchBtn.addEventListener('click', function () {
     const searchForm = document.getElementById('search-foods');
     foodName = searchForm.value;
+    foodName = foodName[0];
     console.log(foodName);
     searchFood(foodName);
 });
 
 function searchFood(foodName) {
-    // location.reload();
+    
      var result = fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${foodName}`)
 
     .then(res => res.json())
