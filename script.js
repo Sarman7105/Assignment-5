@@ -70,6 +70,7 @@ function foodDivClick()
                                 <li>${element.strIngredient2}</li>
                                 <li>${element.strIngredient3}</li>
                                 <li>${element.strIngredient4}</li>
+                                <li>${element.strIngredient5}</li>
                             </ul>
                             `;
             foodDiv.innerHTML = htmlTag;
