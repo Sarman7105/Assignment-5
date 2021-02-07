@@ -47,13 +47,23 @@ function foodDivClick()
     var result = fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // const element=[];
+            let name = "";
+            let url = "";
+            console.log(data.meals.length);
+            for (let i = 0; i < data.meals.length; i++){
+                if (foodName === data.meals[i].strMeal) {
+                    name = data.meals[i].strMeal;
+                    url = data.meals[i].strMealThumb;
+                    break;
+                }
+            }
             const element = data.meals[0];
-            console.log('img src', element.strMealThumb);
-            console.log('food name', element.strMeal);
+            // console.log('img src', element.strMealThumb);
+            // console.log('food name', element.strMeal);
             const foodDiv = document.createElement('div');
-            const htmlTag = `<img src="${element.strMealThumb}">
-                            <h2>${element.strMeal}</h2>
+            const htmlTag = `<img src="${url}">
+                            <h2>${name}</h2>
                             <h4>Ingridients</h4>
                             <ul>
                                 <li>${element.strIngredient1}</li>
