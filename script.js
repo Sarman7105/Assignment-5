@@ -1,6 +1,8 @@
 //accessing search button 
 const searchBtn = document.getElementById('search-btn');
 searchBtn.addEventListener('click', function () {
+    document.getElementById('error-container').style.display = "none";
+    document.getElementById('foods').innerHTML = "";
     const searchForm = document.getElementById('search-foods');
     foodName = searchForm.value;
     console.log('search string length', foodName.length);
@@ -20,12 +22,8 @@ const searchFoodByFirstLetter = (foodName) =>{
         const foods = data.meals;
         creatingFoodsIfo(foods);
     })
-         .catch(error => {
-        const foodDiv = document.createElement('div');
-             const htmlTag = `<h3>Error! No food is available</h3>`;
-             foodDiv.innerHTML = htmlTag;
-            foodDiv.addEventListener('click',foodDivClick)
-            document.getElementById("foods").appendChild(foodDiv);
+    .catch(error => {
+        document.getElementById('error-container').style.display = "block";
     })
 };
 
@@ -39,12 +37,8 @@ const searchFoodByFullName=(foodName) =>{
         const foods = data.meals;
         creatingFoodsIfo(foods);
     })
-        .catch(error => {
-        const foodDiv = document.createElement('div');
-             const htmlTag = `<h3>Error! No food is available</h3>`;
-             foodDiv.innerHTML = htmlTag;
-            foodDiv.addEventListener('click',foodDivClick)
-            document.getElementById("foods").appendChild(foodDiv);
+    .catch(error => {
+        document.getElementById('error-container').style.display = "block";
     })
 };
 
@@ -61,8 +55,7 @@ const creatingFoodsIfo = (foods) => {
         });
 };
 
-function foodDivClick()
-{
+function foodDivClick(){
     console.log(this)
     var childFoodName = this.children[1];
     foodName = childFoodName.innerText;
