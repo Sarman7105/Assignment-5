@@ -1,33 +1,24 @@
+//accessing search button 
 const searchBtn = document.getElementById('search-btn');
 searchBtn.addEventListener('click', function () {
     const searchForm = document.getElementById('search-foods');
     foodName = searchForm.value;
-    foodName = foodName[0];
-    console.log(foodName);
-    searchFood(foodName);
+    console.log('search string length', foodName.length);
+
+    //if the search string length is 1 then search by first letter else search by full name
+    if (foodName.length > 1)
+        searchFoodByFullName(foodName);
+    else
+        searchFoodByFirstLetter(foodName);
 });
 
-function searchFood(foodName) {
+const searchFoodByFirstLetter = (foodName) =>{
     
-     var result = fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${foodName}`)
-
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${foodName}`)
     .then(res => res.json())
     .then(data => {
-        console.log("data", data);
-        console.log(data.meals[0].strMealThumb);
-        var array = data.meals;
-        array.forEach(element => {
-            const foodDiv = document.createElement('div');
-            const htmlTag = `<img src="${element.strMealThumb}">
-                            <h3>${element.strMeal}</h3>
-                            `;
-            // const img = document.createElement('img');
-            // img.src = element.strMealThumb;
-            // foodDiv.appendChild(img);
-            foodDiv.innerHTML = htmlTag;
-            foodDiv.addEventListener('click',foodDivClick)
-            document.getElementById("foods").appendChild(foodDiv);
-        });
+        const foods = data.meals;
+        creatingFoodsIfo(foods);
     })
          .catch(error => {
         const foodDiv = document.createElement('div');
@@ -36,7 +27,40 @@ function searchFood(foodName) {
             foodDiv.addEventListener('click',foodDivClick)
             document.getElementById("foods").appendChild(foodDiv);
     })
-}
+};
+
+//implementing search by FullName
+const searchFoodByFullName=(foodName) =>{
+    
+     var result = fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`)
+
+    .then(res => res.json())
+    .then(data => {
+        const foods = data.meals;
+        creatingFoodsIfo(foods);
+    })
+        .catch(error => {
+        const foodDiv = document.createElement('div');
+             const htmlTag = `<h3>Error! No food is available</h3>`;
+             foodDiv.innerHTML = htmlTag;
+            foodDiv.addEventListener('click',foodDivClick)
+            document.getElementById("foods").appendChild(foodDiv);
+    })
+};
+
+const creatingFoodsIfo = (foods) => {
+    foods.forEach(element => {
+
+            const foodDiv = document.createElement('div');
+            const htmlTag = `<img src="${element.strMealThumb}">
+                            <h3>${element.strMeal}</h3>`;
+            
+            foodDiv.innerHTML = htmlTag;
+            foodDiv.addEventListener('click',foodDivClick)
+            document.getElementById("foods").appendChild(foodDiv);
+        });
+};
+
 function foodDivClick()
 {
     console.log(this)
