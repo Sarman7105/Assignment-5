@@ -38,6 +38,7 @@
     height: 300px;
     padding-top: 2px;
     display: none;
+    border-radius: 10px;
 }
 #error-container h2{
     color: red;
