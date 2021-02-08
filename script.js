@@ -61,7 +61,7 @@ const creatingFoodsInfo = (foods) => {
 function foodDivClick(){
     
     var childFoodName = this.children[1];
-    foodName = childFoodName.innerText;
+    let foodName = childFoodName.innerText;
     var result = fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`)
         .then(res => res.json())
         .then(data => {
