@@ -21,7 +21,7 @@ const searchFoodByFirstLetter = (foodName) =>{
     .then(res => res.json())
     .then(data => {
         const foods = data.meals;
-        creatingFoodsIfo(foods);
+        creatingFoodsInfo(foods);
     })
     .catch(error => {
         document.getElementById('error-container').style.display = "block";
@@ -36,14 +36,14 @@ const searchFoodByFullName=(foodName) =>{
     .then(res => res.json())
     .then(data => {
         const foods = data.meals;
-        creatingFoodsIfo(foods);
+        creatingFoodsInfo(foods);
     })
     .catch(error => {
         document.getElementById('error-container').style.display = "block";
     })
 };
 
-const creatingFoodsIfo = (foods) => {
+const creatingFoodsInfo = (foods) => {
     foods.forEach(element => {
 
             const foodDiv = document.createElement('div');
@@ -56,6 +56,7 @@ const creatingFoodsIfo = (foods) => {
         });
 };
 
+//showing particular food ingredients
 function foodDivClick(){
     
     var childFoodName = this.children[1];
