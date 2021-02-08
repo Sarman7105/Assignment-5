@@ -48,7 +48,8 @@ const creatingFoodsInfo = (foods) => {
 
             const foodDiv = document.createElement('div');
             const htmlTag = `<img src="${element.strMealThumb}">
-                            <h3>${element.strMeal}</h3>`;
+                            <h3>${element.strMeal}</h3>
+                            <p>click to get ingredients</p>`;
             
             foodDiv.innerHTML = htmlTag;
             foodDiv.addEventListener('click',foodDivClick)

@@ -17,7 +17,7 @@
 #food-info div{
     height: 520px;
 }
-.content-div h3{
+.content-div h3,p{
     text-align: center;
 }
 .content-div h4,h2{
