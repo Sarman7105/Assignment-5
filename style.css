@@ -15,7 +15,8 @@
     border-radius: 10px;
 }
 #food-info div{
-    height: 520px;
+    height: 470px;
+    overflow: auto;
 }
 .content-div h3,p{
     text-align: center;
